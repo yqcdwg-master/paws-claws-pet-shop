@@ -1,0 +1,8 @@
+{
+  "name": "Paws & Claws Pet Shop",
+  "description": "A premium pet shop application for grooming services, organic food, and toys, integrated with Supabase for data and Stripe for secure payments.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
