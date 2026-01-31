@@ -64,7 +64,7 @@ const CartPage: React.FC<CartPageProps> = ({ user, cart, removeFromCart, updateQ
       clearCart();
     } catch (err: any) {
       console.error("Checkout failed:", err);
-      alert(`Payment processing failed: ${err.message || 'Unknown error'}`);
+      alert(`支付处理失败: ${err.message || '未知错误'}`);
     } finally {
       setCheckoutLoading(false);
     }
@@ -77,11 +77,11 @@ const CartPage: React.FC<CartPageProps> = ({ user, cart, removeFromCart, updateQ
           <span className="material-symbols-outlined text-5xl text-[#111813]">check</span>
         </div>
         <div className="space-y-4">
-          <h1 className="text-4xl font-black text-[#111813] dark:text-white">Order Confirmed!</h1>
-          <p className="text-gray-500 max-w-md mx-auto">Your furry friend's goodies are on their way. We've sent a receipt to your email.</p>
+          <h1 className="text-4xl font-black text-[#111813] dark:text-white">订单已确认！</h1>
+          <p className="text-gray-500 max-w-md mx-auto">您毛茸茸朋友的商品正在途中。我们已将收据发送到您的电子邮件。</p>
         </div>
         <Link to="/shop" className="inline-block px-10 py-4 bg-[#111813] text-white dark:bg-primary dark:text-[#111813] font-bold rounded-2xl hover:opacity-90 transition-all">
-          Continue Shopping
+          继续购物
         </Link>
       </div>
     );
@@ -91,10 +91,10 @@ const CartPage: React.FC<CartPageProps> = ({ user, cart, removeFromCart, updateQ
     return (
       <div className="max-w-[1280px] mx-auto px-6 py-20 animate-fade-in text-center space-y-6">
         <span className="material-symbols-outlined text-8xl text-gray-200">shopping_cart</span>
-        <h1 className="text-3xl font-black text-[#111813] dark:text-white">Your cart is empty</h1>
-        <p className="text-gray-500">Looks like your pet is waiting for something special!</p>
+        <h1 className="text-3xl font-black text-[#111813] dark:text-white">您的购物车是空的</h1>
+        <p className="text-gray-500">看起来您的宠物正在等待特别的礼物！</p>
         <Link to="/shop" className="inline-block px-10 py-4 bg-primary text-[#111813] font-bold rounded-2xl hover:bg-primary-dark transition-all">
-          Browse Shop
+          浏览商店
         </Link>
       </div>
     );

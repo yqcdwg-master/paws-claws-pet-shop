@@ -22,7 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAdd }) => {
             tag === 'Best Seller' ? 'bg-white text-black' : 
             'bg-primary text-[#111813]'
           }`}>
-            {tag}
+            {tag === 'Sale' ? '特卖' : tag === 'Best Seller' ? '热销' : tag === 'New' ? '新品' : tag === 'Organic' ? '有机' : tag}
           </div>
         ))}
         <button 

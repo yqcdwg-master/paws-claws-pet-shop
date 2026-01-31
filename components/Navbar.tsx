@@ -24,10 +24,10 @@ const Navbar: React.FC<NavbarProps> = ({ user, cartCount }) => {
           </Link>
           
           <div className="hidden md:flex items-center gap-6 lg:gap-9">
-            <Link to="/shop" className={`text-sm font-semibold transition-colors ${isActive('/shop') ? 'text-primary' : 'text-[#111813] dark:text-gray-200 hover:text-primary'}`}>Shop</Link>
-            <Link to="/shop?cat=Grooming" className="text-sm font-semibold text-[#111813] dark:text-gray-200 hover:text-primary transition-colors">Grooming</Link>
-            <Link to="/shop?cat=Food" className="text-sm font-semibold text-[#111813] dark:text-gray-200 hover:text-primary transition-colors">Food</Link>
-            <Link to="/shop?cat=Toys" className="text-sm font-semibold text-[#111813] dark:text-gray-200 hover:text-primary transition-colors">Toys</Link>
+            <Link to="/shop" className={`text-sm font-semibold transition-colors ${isActive('/shop') ? 'text-primary' : 'text-[#111813] dark:text-gray-200 hover:text-primary'}`}>商店</Link>
+            <Link to="/shop?cat=Grooming" className="text-sm font-semibold text-[#111813] dark:text-gray-200 hover:text-primary transition-colors">美容</Link>
+            <Link to="/shop?cat=Food" className="text-sm font-semibold text-[#111813] dark:text-gray-200 hover:text-primary transition-colors">食品</Link>
+            <Link to="/shop?cat=Toys" className="text-sm font-semibold text-[#111813] dark:text-gray-200 hover:text-primary transition-colors">玩具</Link>
           </div>
         </div>
 
@@ -36,7 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({ user, cartCount }) => {
             <span className="material-symbols-outlined text-gray-500 mr-2 text-[20px]">search</span>
             <input 
               type="text" 
-              placeholder="Search products..." 
+              placeholder="搜索商品..." 
               className="bg-transparent border-none focus:ring-0 text-sm w-full p-0 placeholder-gray-400 dark:text-white"
             />
           </div>

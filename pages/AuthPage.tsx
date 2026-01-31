@@ -21,20 +21,20 @@ const AuthPage: React.FC<AuthPageProps> = ({ user }) => {
       <div className="max-w-[1280px] mx-auto px-6 py-20 animate-fade-in text-center">
         <div className="bg-surface-light dark:bg-surface-dark p-10 rounded-3xl shadow-xl max-w-md mx-auto space-y-6">
           <span className="material-symbols-outlined text-6xl text-primary">verified_user</span>
-          <h1 className="text-3xl font-black">Account Active</h1>
-          <p className="text-gray-500">You are logged in as <span className="font-bold text-primary">{user.email}</span></p>
+          <h1 className="text-3xl font-black">账户已激活</h1>
+          <p className="text-gray-500">您已登录为 <span className="font-bold text-primary">{user.email}</span></p>
           <div className="flex flex-col gap-3">
             <button 
               onClick={() => navigate('/shop')}
               className="w-full py-3 bg-primary text-[#111813] font-bold rounded-xl hover:bg-primary-dark transition-all"
             >
-              Start Shopping
+              开始购物
             </button>
             <button 
               onClick={() => supabase.auth.signOut()}
               className="w-full py-3 bg-neutral-light dark:bg-neutral-dark text-gray-600 dark:text-gray-300 font-bold rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-500 transition-all"
             >
-              Sign Out
+              退出登录
             </button>
           </div>
         </div>
@@ -58,12 +58,12 @@ const AuthPage: React.FC<AuthPageProps> = ({ user }) => {
           password,
           options: {
             data: {
-              full_name: 'Pet Lover'
+              full_name: '宠物爱好者'
             }
           }
         });
         if (error) throw error;
-        setMessage({ type: 'success', text: 'Check your email for confirmation link!' });
+        setMessage({ type: 'success', text: '请检查您的电子邮件以获取确认链接！' });
       }
     } catch (err: any) {
       setMessage({ type: 'error', text: err.message });
@@ -80,17 +80,17 @@ const AuthPage: React.FC<AuthPageProps> = ({ user }) => {
           <div className="relative z-10 h-full flex flex-col justify-between text-[#111813]">
             <div className="space-y-4">
               <span className="material-symbols-outlined text-4xl">pets</span>
-              <h2 className="text-3xl font-black leading-tight">Welcome to the Pack</h2>
-              <p className="text-sm font-medium opacity-80 leading-relaxed">Join our community of over 10,000 pet parents who trust Paws & Claws for premium care.</p>
+              <h2 className="text-3xl font-black leading-tight">欢迎加入大家庭</h2>
+              <p className="text-sm font-medium opacity-80 leading-relaxed">加入我们超过 10,000 名信任 Paws & Claws 提供优质护理的宠物家长社区。</p>
             </div>
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-sm">check_circle</span>
-                <span className="text-xs font-bold">Exclusive discounts</span>
+                <span className="text-xs font-bold">独家折扣</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="material-symbols-outlined text-sm">check_circle</span>
-                <span className="text-xs font-bold">Order tracking</span>
+                <span className="text-xs font-bold">订单追踪</span>
               </div>
             </div>
           </div>
