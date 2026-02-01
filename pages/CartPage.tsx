@@ -15,7 +15,6 @@ interface CartPageProps {
 const CartPage: React.FC<CartPageProps> = ({ user, cart, removeFromCart, updateQuantity, clearCart }) => {
   const navigate = useNavigate();
   const [checkoutLoading, setCheckoutLoading] = useState(false);
-  const [orderComplete, setOrderComplete] = useState(false);
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const shipping = subtotal > 100 ? 0 : 15;
@@ -38,15 +37,11 @@ const CartPage: React.FC<CartPageProps> = ({ user, cart, removeFromCart, updateQ
     setCheckoutLoading(true);
 
     try {
-      // Simulate Stripe checkout (sandbox)
-      // In a real production app, you would use the Stripe SDK and a backend endpoint
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
       // Save order to Supabase
       const { data, error } = await supabase.from('orders').insert({
         user_id: user.id,
         total: total,
-        status: 'completed',
+        status: 'pending', // Initial status pending payment
         items: cart, // Store the cart JSON
         created_at: new Date().toISOString(),
       }).select();
@@ -60,32 +55,19 @@ const CartPage: React.FC<CartPageProps> = ({ user, cart, removeFromCart, updateQ
         }
       }
 
-      setOrderComplete(true);
-      clearCart();
+      // clearCart(); // Keep cart until payment? Or clear now? Usually clear after payment. 
+      // But user requirement says "save order success -> jump to payment page". 
+      // If I don't clear cart, user might come back and see items.
+      // Usually e-commerce clears cart after order placement.
+      clearCart(); 
+      navigate('/payment', { state: { total } });
     } catch (err: any) {
       console.error("Checkout failed:", err);
-      alert(`支付处理失败: ${err.message || '未知错误'}`);
+      alert(`Checkout failed: ${err.message || 'Unknown error'}`);
     } finally {
       setCheckoutLoading(false);
     }
   };
-
-  if (orderComplete) {
-    return (
-      <div className="max-w-[1280px] mx-auto px-6 py-20 animate-fade-in text-center space-y-8">
-        <div className="size-24 bg-primary rounded-full flex items-center justify-center mx-auto shadow-xl shadow-primary/20">
-          <span className="material-symbols-outlined text-5xl text-[#111813]">check</span>
-        </div>
-        <div className="space-y-4">
-          <h1 className="text-4xl font-black text-[#111813] dark:text-white">订单已确认！</h1>
-          <p className="text-gray-500 max-w-md mx-auto">您毛茸茸朋友的商品正在途中。我们已将收据发送到您的电子邮件。</p>
-        </div>
-        <Link to="/shop" className="inline-block px-10 py-4 bg-[#111813] text-white dark:bg-primary dark:text-[#111813] font-bold rounded-2xl hover:opacity-90 transition-all">
-          继续购物
-        </Link>
-      </div>
-    );
-  }
 
   if (cart.length === 0) {
     return (

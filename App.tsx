@@ -10,6 +10,8 @@ import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import AuthPage from './pages/AuthPage';
 import CartPage from './pages/CartPage';
+import PaymentPage from './pages/PaymentPage';
+import OrdersPage from './pages/OrdersPage';
 
 // Components
 import Navbar from './components/Navbar';
@@ -104,6 +106,8 @@ const App: React.FC = () => {
                 clearCart={clearCart}
               />
             } />
+            <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/orders" element={<OrdersPage user={user} />} />
           </Routes>
         </main>
         <Footer />

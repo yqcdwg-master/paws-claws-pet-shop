@@ -28,6 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ user, cartCount }) => {
             <Link to="/shop?cat=Grooming" className="text-sm font-semibold text-[#111813] dark:text-gray-200 hover:text-primary transition-colors">美容</Link>
             <Link to="/shop?cat=Food" className="text-sm font-semibold text-[#111813] dark:text-gray-200 hover:text-primary transition-colors">食品</Link>
             <Link to="/shop?cat=Toys" className="text-sm font-semibold text-[#111813] dark:text-gray-200 hover:text-primary transition-colors">玩具</Link>
+            <Link to="/orders" className="text-sm font-semibold text-[#111813] dark:text-gray-200 hover:text-primary transition-colors">订单</Link>
           </div>
         </div>
 
